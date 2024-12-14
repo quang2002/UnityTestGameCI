@@ -30,6 +30,22 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
+          runAsHostUser: true
+          allowDirtyBuild: true
+          unityVersion: auto
+          versioning: Semantic
+          androidExportType: androidPackage
+          androidSymbolType: none
+          dockerIsolationMode: default
+          containerRegistryRepository: unityci/editor
+          containerRegistryImageVersion: 3
+          awsStackName: game-ci
+          providerStrategy: local
+          kubeVolumeSize: 5Gi
+          watchToEnd: true
+          cacheUnityInstallationOnMac: false
+          dockerWorkspacePath: /github/workspace
+          skipActivation: false
 
       # Output
       - uses: actions/upload-artifact@v3
